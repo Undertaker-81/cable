@@ -1,5 +1,6 @@
 package gc.borets.kkz.cable.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.OnDelete;
@@ -7,11 +8,12 @@ import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.Set;
 
 /**
  * @author Panfilov Dmitriy
  * 22.03.2021
- * Бронированная жила
+ * Бронированние
  */
 @Entity
 @Table(name = "armored_wire")
@@ -30,11 +32,10 @@ public class ArmoredWire {
 
     private int length;
 
-    private LocalDate dateLeadCoated;
+    private LocalDate dateArmored;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "braided_id", nullable = false)
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    private BraidedWire braidedWire;
+    @OneToMany(fetch = FetchType.LAZY)
+    @JsonIgnore
+    private Set<BraidedWire> braidedWires;
 
 }

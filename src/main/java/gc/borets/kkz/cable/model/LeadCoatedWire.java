@@ -1,5 +1,6 @@
 package gc.borets.kkz.cable.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.OnDelete;
@@ -32,8 +33,9 @@ public class LeadCoatedWire {
 
     private LocalDate dateLeadCoated;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "isulated_id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
+    @JsonIgnore
     private InsulatedWire insulatedWire;
 }

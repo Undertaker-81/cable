@@ -1,5 +1,6 @@
 package gc.borets.kkz.cable.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.OnDelete;
@@ -7,6 +8,7 @@ import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.Set;
 
 /**
  * @author Panfilov Dmitriy
@@ -32,8 +34,8 @@ public class InsulatedWire {
 
     private LocalDate dateInsulated;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "tinned_id", nullable = false)
+    @ManyToMany(fetch = FetchType.LAZY)
     @OnDelete(action = OnDeleteAction.CASCADE)
-    private TinnedWire tinnedWire;
+    @JsonIgnore
+    private Set<TinnedWire>  tinnedWires;
 }

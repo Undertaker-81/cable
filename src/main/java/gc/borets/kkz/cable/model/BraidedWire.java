@@ -1,5 +1,6 @@
 package gc.borets.kkz.cable.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.OnDelete;
@@ -32,9 +33,18 @@ public class BraidedWire {
 
     private LocalDate dateBraided;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "lead_coated_id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
+    @JsonIgnore
     private LeadCoatedWire leadCoatedWire;
+
+  /*  @ManyToOne(fetch = FetchType.LAZY)
+ //   @JoinColumn(name = "armored_wire_id", nullable = true)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JsonIgnore
+    private ArmoredWire armoredWire;
+
+   */
 
 }
