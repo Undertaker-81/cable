@@ -16,4 +16,7 @@ public interface ArmoredWireRepository extends JpaRepository<ArmoredWire, Long> 
 
     @Query("select a.braidedWires from ArmoredWire a where a.trackId =:id")
     List<BraidedWire> findAllBraided(@Param("id") String id);
+
+    @Query("select a from ArmoredWire a join fetch a.braidedWires b  where b.trackId =:id")
+    List<ArmoredWire> findAllByBraidedWires(@Param("id") String id);
 }

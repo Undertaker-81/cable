@@ -34,7 +34,7 @@ public class LeadCoatedWire {
     private LocalDate dateLeadCoated;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "isulated_id", nullable = false)
+    @JoinColumn(name = "insulated_id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
     private InsulatedWire insulatedWire;

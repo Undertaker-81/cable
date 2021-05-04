@@ -1,6 +1,9 @@
 package gc.borets.kkz.cable.repository;
 
+import gc.borets.kkz.cable.model.ArmoredWire;
 import gc.borets.kkz.cable.model.BraidedWire;
+import gc.borets.kkz.cable.model.InsulatedWire;
+import gc.borets.kkz.cable.model.LeadCoatedWire;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -25,7 +28,6 @@ class BraidedWireRepositoryTest {
     private ArmoredWireRepository armoredWireRepository;
 
     @Test
-
     public  void test (){
         List<BraidedWire> cable = repository.findAll();
         System.out.println(cable);
@@ -36,6 +38,24 @@ class BraidedWireRepositoryTest {
         List<BraidedWire> cable = armoredWireRepository.findAllBraided("б-29230");
        // System.out.println(cable);
         cable.forEach(System.out::println);
+    }
+
+    @Test
+    public void getLeadCoatedByBraidedId(){
+        LeadCoatedWire coatedWires = repository.getLeadCoatedByBraidedId("о-118022");
+        System.out.println(coatedWires);
+    }
+
+
+    @Test
+    public void findAllBraidedByCoatedLeadIn(){
+        List<BraidedWire> braidedWires = repository.findBraidedWireByLeadCoated("с-77402");
+        braidedWires.forEach(System.out::println);
+    }
+    @Test
+    public void findAllArmoredByBraided(){
+        List<ArmoredWire> armoredWires = armoredWireRepository.findAllByBraidedWires("о-118022");
+        armoredWires.forEach(System.out::println);
     }
 
 }
