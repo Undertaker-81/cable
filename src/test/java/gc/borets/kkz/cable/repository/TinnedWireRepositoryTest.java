@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -33,5 +34,11 @@ class TinnedWireRepositoryTest {
     void findAllInsulatedByTinnedWire() {
         List<Wire> insulatedWires = repository.findWireByTinnedWire("Л-22508");
         insulatedWires.forEach(System.out::println);
+    }
+
+    @Test
+    void findAllByDateTinned() {
+        List<TinnedWire> tinnedWires = repository.findAllByDateTinned(LocalDate.of(2021, 1, 1));
+        tinnedWires.forEach(System.out::println);
     }
 }

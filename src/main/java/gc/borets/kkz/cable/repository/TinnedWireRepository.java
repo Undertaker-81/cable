@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
 import java.util.List;
 
 /**
@@ -21,4 +22,14 @@ public interface TinnedWireRepository extends JpaRepository<TinnedWire, Long> {
 
     @Query("select t.wire from TinnedWire t where t.trackId =:id")
     List<Wire> findWireByTinnedWire(@Param("id") String id);
+
+    List<TinnedWire> findAllByDateTinned(LocalDate date);
+
+    List<TinnedWire> findAllByDateTinnedBefore(LocalDate date);
+
+    List<TinnedWire> findAllByDateTinnedAfter(LocalDate date);
+
+    List<TinnedWire> findAllByDateTinnedBetween(LocalDate from, LocalDate to);
+
+    List<TinnedWire> findAllByNomenclatureId(int nom);
 }
