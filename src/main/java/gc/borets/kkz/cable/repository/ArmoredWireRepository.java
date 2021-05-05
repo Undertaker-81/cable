@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+import java.time.LocalDate;
 import java.util.List;
 
 /**
@@ -19,4 +20,14 @@ public interface ArmoredWireRepository extends JpaRepository<ArmoredWire, Long> 
 
     @Query("select a from ArmoredWire a join fetch a.braidedWires b  where b.trackId =:id")
     List<ArmoredWire> findAllByBraidedWires(@Param("id") String id);
+
+    List<ArmoredWire> findAllByCableCrossSection(Integer value);
+
+    List<ArmoredWire> findAllByDateArmored(LocalDate date);
+
+    List<ArmoredWire> findAllByDateArmoredAfter(LocalDate date);
+
+    List<ArmoredWire> findAllByDateArmoredBefore(LocalDate date);
+
+    List<ArmoredWire> findAllByDateArmoredBetween(LocalDate from, LocalDate to);
 }

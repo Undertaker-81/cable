@@ -31,5 +31,7 @@ public interface TinnedWireRepository extends JpaRepository<TinnedWire, Long> {
 
     List<TinnedWire> findAllByDateTinnedBetween(LocalDate from, LocalDate to);
 
-    List<TinnedWire> findAllByNomenclatureId(int nom);
+    List<TinnedWire> findAllByNomenclatureId(Integer nom);
+
+    List<TinnedWire> findAllByDiameter(Double diameter);
 }

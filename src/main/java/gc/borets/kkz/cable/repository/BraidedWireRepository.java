@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
 import java.util.List;
 
 /**
@@ -21,4 +22,14 @@ public interface BraidedWireRepository extends JpaRepository<BraidedWire, Long> 
 
     @Query("select b from BraidedWire b where b.leadCoatedWire.trackId =:id")
     List<BraidedWire> findBraidedWireByLeadCoated(@Param("id") String id);
+
+    List<BraidedWire> findAllByCableCrossSection(Integer value);
+
+    List<BraidedWire> findAllByDateBraided(LocalDate date);
+
+    List<BraidedWire> findAllByDateBraidedAfter(LocalDate date);
+
+    List<BraidedWire> findAllByDateBraidedBefore(LocalDate date);
+
+    List<BraidedWire> findAllByDateBraidedBetween(LocalDate from, LocalDate to);
 }

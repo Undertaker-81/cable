@@ -30,7 +30,7 @@ class BraidedWireRepositoryTest {
     @Test
     public  void test (){
         List<BraidedWire> cable = repository.findAll();
-        System.out.println(cable);
+        cable.forEach(System.out::println);
     }
 
     @Test

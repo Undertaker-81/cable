@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
 import java.util.List;
 
 /**
@@ -21,4 +22,14 @@ public interface LeadCoatedWireRepository extends JpaRepository<LeadCoatedWire, 
 
     @Query("select l from LeadCoatedWire l where l.insulatedWire.trackId =:id")
     List<LeadCoatedWire> getAllByInsulated(@Param("id") String id);
+
+    List<LeadCoatedWire> findAllByCableCrossSection(Integer value);
+
+    List<LeadCoatedWire> findAllByDateLeadCoated(LocalDate date);
+
+    List<LeadCoatedWire> findAllByDateLeadCoatedAfter(LocalDate date);
+
+    List<LeadCoatedWire> findAllByDateLeadCoatedBefore(LocalDate date);
+
+    List<LeadCoatedWire> findAllByDateLeadCoatedBetween(LocalDate from, LocalDate to);
 }

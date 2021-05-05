@@ -3,6 +3,7 @@ package gc.borets.kkz.cable.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
@@ -37,6 +38,7 @@ public class BraidedWire {
     @JoinColumn(name = "lead_coated_id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
+    @ToString.Exclude
     private LeadCoatedWire leadCoatedWire;
 
   /*  @ManyToOne(fetch = FetchType.LAZY)
