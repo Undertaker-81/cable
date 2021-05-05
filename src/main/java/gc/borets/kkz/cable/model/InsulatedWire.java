@@ -8,6 +8,7 @@ import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -38,4 +39,8 @@ public class InsulatedWire {
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
     private Set<TinnedWire>  tinnedWires;
+
+    @OneToMany(fetch = FetchType.LAZY)
+    @JsonIgnore
+    private List<TinnedWireInsulatedWire> tinnedWireInsulatedWires;
 }
