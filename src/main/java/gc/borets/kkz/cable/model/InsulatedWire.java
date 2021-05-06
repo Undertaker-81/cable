@@ -34,11 +34,13 @@ public class InsulatedWire {
     private int length;
 
     private LocalDate dateInsulated;
-
+/*
     @ManyToMany(fetch = FetchType.LAZY)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
     private Set<TinnedWire>  tinnedWires;
+
+ */
 
     @OneToMany(fetch = FetchType.LAZY)
     @JsonIgnore

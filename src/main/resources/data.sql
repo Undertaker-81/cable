@@ -56,7 +56,7 @@ insert into insulated_wire (track_id, cable_cross_section, date_insulated, lengt
                              ('и-27270', 16, '2021-02-01', 7500, 'Жила изолированная КЕСБП-230 16 ТУ16.К71-362-2006', 186929);
 
 
-
+/*
 insert into insulated_wire_tinned_wires (insulated_wire_track_id, tinned_wires_track_id)
                                 VALUES ('и-27232', 'Л-22508'),
                                        ('и-27232', 'Л-22510'),
@@ -88,6 +88,8 @@ insert into insulated_wire_tinned_wires (insulated_wire_track_id, tinned_wires_t
                                        ('и-27238','Л-22527'),
                                        ('и-27404','Л-22514'),
                                        ('и-27455','Л-22514');
+
+ */
 
 insert into tinned_wire_insulated_wire (length_tinned, insulated_wire_track_id, tinned_wire_track_id) values
                                         (5100, 'и-27232', 'Л-22508'),

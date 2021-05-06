@@ -10,6 +10,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -23,6 +25,8 @@ class TinnedWireRepositoryTest {
 
     @Autowired
     private TinnedWireRepository repository;
+
+    private InsulatedWireRepository insulatedWireRepository;
 
     @Test
     void findAllByWire() {
@@ -39,6 +43,13 @@ class TinnedWireRepositoryTest {
     @Test
     void findAllByDateTinned() {
         List<TinnedWire> tinnedWires = repository.findAllByDateTinned(LocalDate.of(2021, 1, 1));
+        tinnedWires.forEach(System.out::println);
+    }
+
+    @Test
+    void findAllNotBysy(){
+
+        List<TinnedWire> tinnedWires = repository.findAllIsNotBusy(Set.of("Л-22508", "Л-22509", "Л-22510", "Л-22515", "Л-22514"));
         tinnedWires.forEach(System.out::println);
     }
 }

@@ -21,7 +21,7 @@ class InsulatedWireRepositoryTest {
 
     @Autowired
     private InsulatedWireRepository repository;
-
+/*
     @Test
     void findAllByTinnedWires() {
         List<InsulatedWire> insulatedWires = repository.findAllByTinnedWires("Л-22508");
@@ -33,4 +33,8 @@ class InsulatedWireRepositoryTest {
         List<TinnedWire> tinnedWires = repository.findTinnedWireByInsulatedId("и-27233");
         tinnedWires.forEach(System.out::println);
     }
+
+
+ */
+
 }

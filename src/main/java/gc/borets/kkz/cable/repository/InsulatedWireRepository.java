@@ -16,12 +16,14 @@ import java.util.List;
  */
 @Transactional(readOnly = true)
 public interface InsulatedWireRepository extends JpaRepository<InsulatedWire, Long> {
-
+/*
     @Query("select i from InsulatedWire i join fetch i.tinnedWires t where t.trackId =:id")
     List<InsulatedWire> findAllByTinnedWires(@Param("id") String id);
 
     @Query("select i.tinnedWires from InsulatedWire i where i.trackId =:id")
     List<TinnedWire> findTinnedWireByInsulatedId(@Param("id") String id);
+
+ */
 
     List<InsulatedWire> findAllByDateInsulated(LocalDate date);
 
@@ -32,5 +34,8 @@ public interface InsulatedWireRepository extends JpaRepository<InsulatedWire, Lo
     List<InsulatedWire> findAllByDateInsulatedBetween(LocalDate from, LocalDate to);
 
     List<InsulatedWire> findAllByCableCrossSection(Integer value);
+
+   // @Query("select t.tinnedWire from InsulatedWire i join fetch  i.tinnedWireInsulatedWires t")
+ //   List<TinnedWire> findTinnedWireByInsulated(@Param("id") String id);
 
 }

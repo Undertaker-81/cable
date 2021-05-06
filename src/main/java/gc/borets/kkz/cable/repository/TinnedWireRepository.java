@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Set;
 
 /**
  * @author Panfilov Dmitriy
@@ -34,4 +35,7 @@ public interface TinnedWireRepository extends JpaRepository<TinnedWire, Long> {
     List<TinnedWire> findAllByNomenclatureId(Integer nom);
 
     List<TinnedWire> findAllByDiameter(Double diameter);
+
+    @Query("select t from TinnedWire t where t.trackId not in :set")
+    List<TinnedWire> findAllIsNotBusy(@Param("set") Set<String> set);
 }
