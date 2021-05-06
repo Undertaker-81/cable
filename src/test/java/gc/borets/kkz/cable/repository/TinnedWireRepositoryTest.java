@@ -26,7 +26,8 @@ class TinnedWireRepositoryTest {
     @Autowired
     private TinnedWireRepository repository;
 
-    private InsulatedWireRepository insulatedWireRepository;
+    @Autowired
+    private TinnedWireInsulatedWireRepository tinnedWireInsulatedWireRepository;
 
     @Test
     void findAllByWire() {
@@ -47,9 +48,13 @@ class TinnedWireRepositoryTest {
     }
 
     @Test
-    void findAllNotBysy(){
-
-        List<TinnedWire> tinnedWires = repository.findAllIsNotBusy(Set.of("Л-22508", "Л-22509", "Л-22510", "Л-22515", "Л-22514"));
+    void findAllNotBusy(){
+        Set<String> setUsed = tinnedWireInsulatedWireRepository
+                                                            .findTinnedWireInInsulatedWire()
+                                                            .stream()
+                                                            .map(TinnedWire::getTrackId)
+                                                            .collect(Collectors.toSet());
+        List<TinnedWire> tinnedWires = repository.findAllIsNotBusy(setUsed);
         tinnedWires.forEach(System.out::println);
     }
 }

@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -33,6 +34,12 @@ class TinnedWireInsulatedWireRepositoryTest {
     void findAllByTinnedWireTrackId(){
         List<TinnedWireInsulatedWire> tinnedWireList = repository.findAllByTinnedWire("Л-22508");
         tinnedWireList.forEach(System.out::println);
+    }
+
+    @Test
+    void findAllTinnedInInsulatedWire(){
+        Set<TinnedWire> tinnedWires = repository.findTinnedWireInInsulatedWire();
+        tinnedWires.forEach(System.out::println);
     }
 
 }

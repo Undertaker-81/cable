@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Set;
 
 /**
  * @author Panfilov Dmitriy
@@ -32,4 +33,13 @@ public interface LeadCoatedWireRepository extends JpaRepository<LeadCoatedWire, 
     List<LeadCoatedWire> findAllByDateLeadCoatedBefore(LocalDate date);
 
     List<LeadCoatedWire> findAllByDateLeadCoatedBetween(LocalDate from, LocalDate to);
+
+    //занятые в освинцевании
+    @Query("select l.insulatedWire from LeadCoatedWire l")
+    Set<InsulatedWire> findInsulatedInLeadCoatedWireUse();
+
+    //свободные
+    //set - занятые в оплетке
+    @Query("select l from LeadCoatedWire l where l.trackId not in :set")
+    List<LeadCoatedWire> findLeadCoatedWireIsNotBusy(@Param("set") Set<String> set);
 }

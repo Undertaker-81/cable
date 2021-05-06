@@ -8,7 +8,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-
+import java.util.Set;
 
 
 /**
@@ -23,5 +23,9 @@ public interface TinnedWireInsulatedWireRepository extends JpaRepository<TinnedW
 
     @Query("select i from TinnedWireInsulatedWire i where i.tinnedWire.trackId =:id")
     List<TinnedWireInsulatedWire> findAllByTinnedWire(@Param("id") String id);
+
+    //использованные в изоляции
+    @Query("select t.tinnedWire from TinnedWireInsulatedWire t")
+    Set<TinnedWire> findTinnedWireInInsulatedWire();
 
 }

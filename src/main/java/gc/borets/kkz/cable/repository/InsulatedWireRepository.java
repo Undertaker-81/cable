@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Set;
 
 /**
  * @author Panfilov Dmitriy
@@ -35,7 +36,7 @@ public interface InsulatedWireRepository extends JpaRepository<InsulatedWire, Lo
 
     List<InsulatedWire> findAllByCableCrossSection(Integer value);
 
-   // @Query("select t.tinnedWire from InsulatedWire i join fetch  i.tinnedWireInsulatedWires t")
- //   List<TinnedWire> findTinnedWireByInsulated(@Param("id") String id);
+    @Query("select i from InsulatedWire i where i.trackId not in :set")
+    List<InsulatedWire> findTinnedWireIsNotBusy(@Param("set") Set<String> set);
 
 }

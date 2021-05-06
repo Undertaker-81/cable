@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Set;
 
 /**
  * @author Panfilov Dmitriy
@@ -32,4 +33,12 @@ public interface BraidedWireRepository extends JpaRepository<BraidedWire, Long> 
     List<BraidedWire> findAllByDateBraidedBefore(LocalDate date);
 
     List<BraidedWire> findAllByDateBraidedBetween(LocalDate from, LocalDate to);
+
+    //занятые в оплетке
+    @Query("select b.leadCoatedWire from BraidedWire b")
+    Set<LeadCoatedWire> findLeadCoatedWireInBraidedWire();
+
+    //свободные
+    @Query("select b from BraidedWire b where b.trackId not in :set")
+    List<BraidedWire> findAllByTrackIdNotIn(@Param("set") Set<String> set);
 }

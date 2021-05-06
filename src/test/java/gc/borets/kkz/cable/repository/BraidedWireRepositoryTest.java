@@ -10,6 +10,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -56,6 +58,23 @@ class BraidedWireRepositoryTest {
     public void findAllArmoredByBraided(){
         List<ArmoredWire> armoredWires = armoredWireRepository.findAllByBraidedWires("о-118022");
         armoredWires.forEach(System.out::println);
+    }
+
+    @Test
+    public void findLeadCoatedWireIsBusy(){
+        Set<LeadCoatedWire> leadCoatedWires = repository.findLeadCoatedWireInBraidedWire();
+        leadCoatedWires.forEach(System.out::println);
+    }
+    @Test
+    public void findBraidedWireIsNotBusy(){
+        Set<String> braidedId = armoredWireRepository
+                                    .findBraidedWireInArmored()
+                                    .stream()
+                                    .map(BraidedWire::getTrackId)
+                                    .collect(Collectors.toSet());
+
+        List<BraidedWire> findBraidedWireIsNotBusy = repository.findAllByTrackIdNotIn(braidedId);
+        findBraidedWireIsNotBusy.forEach(System.out::println);
     }
 
 }

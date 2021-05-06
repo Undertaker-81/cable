@@ -8,6 +8,7 @@ import org.springframework.data.repository.query.Param;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Set;
 
 /**
  * @author Panfilov Dmitriy
@@ -30,4 +31,8 @@ public interface ArmoredWireRepository extends JpaRepository<ArmoredWire, Long> 
     List<ArmoredWire> findAllByDateArmoredBefore(LocalDate date);
 
     List<ArmoredWire> findAllByDateArmoredBetween(LocalDate from, LocalDate to);
+
+    //занятые в броне
+    @Query("select a.braidedWires from ArmoredWire a")
+    Set<BraidedWire> findBraidedWireInArmored();
 }
