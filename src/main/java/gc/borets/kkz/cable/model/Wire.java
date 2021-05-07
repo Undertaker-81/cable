@@ -1,5 +1,6 @@
 package gc.borets.kkz.cable.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -14,10 +15,12 @@ import java.time.LocalDate;
 @Data
 @NoArgsConstructor
 @Table(name = "wire")
+@AllArgsConstructor
 public class Wire {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @SequenceGenerator( name = "pk_sequence", sequenceName = "pk_sequence", allocationSize = 1, initialValue = 100 )
+    @GeneratedValue( strategy = GenerationType.SEQUENCE, generator = "pk_sequence")
     private long id;
 
     private String nameWire;
@@ -30,5 +33,13 @@ public class Wire {
 
     private int weight;
 
-   // private LocalDate date;
+    public Wire(String nameWire, int numberCoilSupplier, int nomenclatureId, double diameter, int weight) {
+        this.nameWire = nameWire;
+        this.numberCoilSupplier = numberCoilSupplier;
+        this.nomenclatureId = nomenclatureId;
+        this.diameter = diameter;
+        this.weight = weight;
+    }
+
+    // private LocalDate date;
 }

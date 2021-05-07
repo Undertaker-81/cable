@@ -57,4 +57,5 @@ class TinnedWireRepositoryTest {
         List<TinnedWire> tinnedWires = repository.findAllIsNotBusy(setUsed);
         tinnedWires.forEach(System.out::println);
     }
+
 }
