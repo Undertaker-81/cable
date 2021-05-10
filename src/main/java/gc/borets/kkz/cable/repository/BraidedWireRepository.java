@@ -16,7 +16,7 @@ import java.util.Set;
  * 30.03.2021
  */
 @Transactional(readOnly = true)
-public interface BraidedWireRepository extends JpaRepository<BraidedWire, Long> {
+public interface BraidedWireRepository extends JpaRepository<BraidedWire, String> {
 
     @Query("select b.leadCoatedWire from BraidedWire b where b.trackId =:id")
     LeadCoatedWire getLeadCoatedByBraidedId(@Param("id") String id);

@@ -16,7 +16,7 @@ import java.util.Set;
  * 30.03.2021
  */
 @Transactional(readOnly = true)
-public interface LeadCoatedWireRepository extends JpaRepository<LeadCoatedWire, Long> {
+public interface LeadCoatedWireRepository extends JpaRepository<LeadCoatedWire, String> {
 
     @Query("select l.insulatedWire from LeadCoatedWire l where l.trackId =:id")
     InsulatedWire getInsulatedByLeadCoatedId(@Param("id") String id);

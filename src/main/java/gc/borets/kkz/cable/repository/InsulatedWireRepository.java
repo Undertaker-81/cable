@@ -16,7 +16,7 @@ import java.util.Set;
  * 30.03.2021
  */
 @Transactional(readOnly = true)
-public interface InsulatedWireRepository extends JpaRepository<InsulatedWire, Long> {
+public interface InsulatedWireRepository extends JpaRepository<InsulatedWire, String> {
 /*
     @Query("select i from InsulatedWire i join fetch i.tinnedWires t where t.trackId =:id")
     List<InsulatedWire> findAllByTinnedWires(@Param("id") String id);

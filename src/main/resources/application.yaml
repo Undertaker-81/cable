@@ -3,7 +3,7 @@ spring:
     show-sql: true
     open-in-view: false
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: create
 
     properties:
       #  http://docs.jboss.org/hibernate/orm/5.3/userguide/html_single/Hibernate_User_Guide.html#configurations
@@ -19,4 +19,3 @@ spring:
     password: KKZ0comp
     initialization-mode: always
     platform: postgres
-  # h2.console.enabled: true

@@ -16,7 +16,7 @@ import java.util.Set;
  * 30.03.2021
  */
 //@Transactional(readOnly = true)
-public interface TinnedWireRepository extends JpaRepository<TinnedWire, Long> {
+public interface TinnedWireRepository extends JpaRepository<TinnedWire, String> {
 
     @Query("select t from TinnedWire t where t.wire.numberCoilSupplier =:numberCoilSupplier")
     List<TinnedWire> findAllByWireNumberCoilSupplier(@Param("numberCoilSupplier") Integer id);

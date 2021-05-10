@@ -40,9 +40,10 @@ public class InsulatedWire {
     @JsonIgnore
     private Set<TinnedWire>  tinnedWires;
 
- */
+
 
     @OneToMany(fetch = FetchType.LAZY)
     @JsonIgnore
     private List<TinnedWireInsulatedWire> tinnedWireInsulatedWires;
+    */
 }

@@ -13,7 +13,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
@@ -22,7 +22,8 @@ import javax.persistence.Table;
 @NoArgsConstructor
 public class TinnedWireInsulatedWire {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @SequenceGenerator( name = "pk_sequence", sequenceName = "pk_sequence", allocationSize = 1, initialValue = 100 )
+    @GeneratedValue( strategy = GenerationType.SEQUENCE, generator = "pk_sequence")
     private Long id;
 
     @ManyToOne(fetch = FetchType.EAGER)
