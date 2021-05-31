@@ -23,13 +23,14 @@ public class ArmoredWire {
     @Id
     private String trackId; //id
 
-    private String name;
+    @Column(name = "name")
+    private String cableName;
 
     private int nomenclatureId;
 
     private int cableCrossSection;
-
-    private int length;
+    @Column(name = "length")
+    private int cableLength;
 
     private LocalDate dateArmored;
 
