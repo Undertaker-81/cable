@@ -7,3 +7,4 @@ class BraidedWireService {
         return axios.get(BRAIDED_BASE_URL_API + "braided/" + armoredID)
     }
 }
+export default new BraidedWireService();
