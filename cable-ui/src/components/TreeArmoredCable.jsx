@@ -31,7 +31,7 @@ class TreeArmoredCable extends Component {
 
                */
                 armoreds.push(new ArmoredDto(cable.trackId, cable.trackId + " - " + cable.cableName
-                + " длинна: " + cable.cableLength, [], false))
+                + " длинна: " + cable.cableLength, [], false, true))
             })
             this.setState({armoredCable : armoreds});
         });
@@ -52,14 +52,12 @@ class TreeArmoredCable extends Component {
             let count = armoreds.findIndex(cable => cable.key === key)
             armoreds[count].nodes = braideds
             armoreds[count].isOpen = true
-          //  obj.nodes = braideds
-           // obj.isOpen = true
 
         this.setState({armoredCable : armoreds})
-      //  this.setState(this.state.armoredCable.find(cable => cable.key === key).isOpen = true)
-        //    this.forceUpdate();
            console.log(armoreds)
+            //https://github.com/iannbing/react-simple-tree-menu/blob/master/stories/index.stories.js
             //https://devexpress.github.io/devextreme-reactive/react/grid/docs/guides/tree-data/
+            //https://github.com/azizali/react-super-treeview
         }
     };
 
