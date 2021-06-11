@@ -4,6 +4,7 @@ import BraidedWireService from "../services/BraidedWireService";
 import SuperTreeview from 'react-super-treeview';
 
 
+
 let ArmoredDto2 = require('../model/new/ArmoredDto2.js')
 let BraidedWireDto2 = require('../model/new/BraidedWireDto2.js')
 
@@ -22,15 +23,15 @@ class TreeArmoredCable2 extends Component {
             res.data.map(cable => {
 
                 armoreds.push(new ArmoredDto2(cable.trackId, cable.trackId + " - " + cable.cableName
-                    + " длинна: " + cable.cableLength, [], false, false, false))
+                    + " длинна: " + cable.cableLength, [], false, false, true))
             })
             this.setState({armoredCable : armoreds});
         });
     }
     clickItem(key, level){
         let armoreds = this.state.armoredCable;
+        let braideds = [];
         if (level===0) {
-            let braideds = [];
 
             BraidedWireService.getBraidedWireByArmored(key).then((response) => {
 
@@ -44,9 +45,10 @@ class TreeArmoredCable2 extends Component {
             let count = armoreds.findIndex(cable => cable.id === key)
             armoreds[count].children = braideds
             armoreds[count].isExpanded = true
+            armoreds[count].isChildrenLoading = false
 
-            this.setState({armoredCable : armoreds})
-            console.log(armoreds)
+          //  this.setState({armoredCable : armoreds})
+        //    console.log(armoreds)
 
             //https://github.com/azizali/react-super-treeview
         }
@@ -61,26 +63,29 @@ class TreeArmoredCable2 extends Component {
                         <div className="panel-body">
                             <SuperTreeview
                                 data={ this.state.armoredCable }
-                                onUpdateCb={(updatedData)=>{
+                                onUpdateCb={(updatedData = this.state.armoredCable)=>{
                                     this.setState({armoredCable: updatedData})
                                 }}
                                 isCheckable={()=>false}
                                 isDeletable={()=>false}
-                               isExpandable={(node, depth)=>{ return true; }}
+                                isExpandable={(node, depth)=>{ return true; }}
                                 onExpandToggleCb={(node, depth)=>{
 
                                     if(node.isExpanded === true){
                                         // This will show the loading sign
-                                        node.isChildrenLoading = true;
 
+                                        node.isChildrenLoading = true;
+                                        const updatedData =  this.clickItem(node.id, depth);
                                         setTimeout(()=>{
-                                            const updatedData = this.clickItem(node.id, depth);
+                                           // node.isChildrenLoading = false;
                                        // Update state
                                             this.setState({armoredCable: updatedData})
+                                            console.log(node.id)
 
-                                        }, 1700);
+                                        }, 300);
                                     }
                                 }}
+
                             />
 
                         </div>
