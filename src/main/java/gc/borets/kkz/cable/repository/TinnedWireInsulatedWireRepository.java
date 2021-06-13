@@ -15,7 +15,7 @@ import java.util.Set;
  * @author Panfilov Dmitriy
  * 06.05.2021
  */
-//@Transactional(readOnly = true)
+@Transactional(readOnly = true)
 public interface TinnedWireInsulatedWireRepository extends JpaRepository<TinnedWireInsulatedWire, Long> {
 
     @Query("select i from TinnedWireInsulatedWire i where i.insulatedWire.trackId =:id")

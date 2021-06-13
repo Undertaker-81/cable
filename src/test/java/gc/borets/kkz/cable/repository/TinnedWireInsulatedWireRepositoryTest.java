@@ -3,6 +3,7 @@ package gc.borets.kkz.cable.repository;
 import gc.borets.kkz.cable.model.InsulatedWire;
 import gc.borets.kkz.cable.model.TinnedWire;
 import gc.borets.kkz.cable.model.TinnedWireInsulatedWire;
+import gc.borets.kkz.cable.service.InsulatedService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -27,6 +28,9 @@ class TinnedWireInsulatedWireRepositoryTest {
     private TinnedWireInsulatedWireRepository repository;
 
     @Autowired
+    private InsulatedService service;
+
+    @Autowired
     private TinnedWireRepository tinnedWireRepository;
     @Autowired
     private InsulatedWireRepository insulatedWireRepository;
@@ -35,6 +39,12 @@ class TinnedWireInsulatedWireRepositoryTest {
     void findAllByInsulatedWireTrackId() {
         List<TinnedWireInsulatedWire> tinnedWireList = repository.findAllByInsulatedWireTrackId("и-27233");
         tinnedWireList.forEach(System.out::println);
+    }
+
+    @Test
+    void findTinnedByInsulated(){
+        List<TinnedWire> tinnedWires = service.findTinnedWireByInsulated("и-27233");
+        tinnedWires.forEach(System.out::println);
     }
 
     @Test

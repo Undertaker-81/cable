@@ -36,7 +36,7 @@ public interface BraidedWireRepository extends JpaRepository<BraidedWire, String
 
     //занятые в оплетке
     @Query("select b.leadCoatedWire from BraidedWire b")
-    Set<LeadCoatedWire> findLeadCoatedWireInBraidedWire();
+    List<LeadCoatedWire> findLeadCoatedWireInBraidedWire();
 
     //свободные
     @Query("select b from BraidedWire b where b.trackId not in :set")

@@ -62,7 +62,7 @@ class BraidedWireRepositoryTest {
 
     @Test
     public void findLeadCoatedWireIsBusy(){
-        Set<LeadCoatedWire> leadCoatedWires = repository.findLeadCoatedWireInBraidedWire();
+        List<LeadCoatedWire> leadCoatedWires = repository.findLeadCoatedWireInBraidedWire();
         leadCoatedWires.forEach(System.out::println);
     }
     @Test

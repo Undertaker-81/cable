@@ -1,4 +1,4 @@
-class ArmoredDto2 {
+class TinnedDto {
     constructor(id, name, children, isChecked, isExpanded, isChildrenLoading) {
         this.id = id
         this.name = name
@@ -7,7 +7,5 @@ class ArmoredDto2 {
         this.isExpanded = isExpanded
         this.isChildrenLoading = isChildrenLoading
     }
-
 }
-
-module.exports = ArmoredDto2;
+module.exports = TinnedDto;

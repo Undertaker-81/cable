@@ -1,10 +1,11 @@
-class BraidedWireDto{
-    constructor(key, label, nodes, isOpen, level) {
-        this.key = key
-        this.label = label
-        this.nodes = nodes
-        this.isOpen = isOpen
-        this.level = level
+class BraidedWireDto {
+    constructor(id, name, children, isChecked, isChildrenLoading) {
+        this.id = id
+        this.name = name
+        this.children = children
+        this.isChecked = isChecked
+        this.isChildrenLoading = isChildrenLoading
+
     }
 }
 module.exports = BraidedWireDto;

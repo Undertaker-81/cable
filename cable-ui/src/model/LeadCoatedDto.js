@@ -1,4 +1,4 @@
-class ArmoredDto {
+class LeadCoatedDto {
     constructor(id, name, children, isChecked, isExpanded, isChildrenLoading) {
         this.id = id
         this.name = name
@@ -7,7 +7,5 @@ class ArmoredDto {
         this.isExpanded = isExpanded
         this.isChildrenLoading = isChildrenLoading
     }
-
 }
-
-module.exports = ArmoredDto;
+module.exports = LeadCoatedDto;
