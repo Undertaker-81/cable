@@ -5,7 +5,7 @@ import LeadCoatedWireService from "../services/LeadCoatedWireService";
 import InsulatedWireService from "../services/InsulatedWireService";
 import TinnedWireService from "../services/TinnedWireService";
 import SuperTreeview from 'react-super-treeview';
-import "./style.css";
+import "react-super-treeview/dist/style.css";
 
 
 
@@ -162,6 +162,7 @@ class TreeArmoredCable extends Component {
     render() {
         return (
             <div className="container">
+                <h1>Кабель бронированный</h1>
                 <div className="row">
                     <div className="col-md-12 text-lg-left">
                         <SuperTreeview
