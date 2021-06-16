@@ -11,9 +11,12 @@ class HeaderComponent extends Component {
         return (
             <div>
                 <header>
-                    <nav className="navbar navbar-expand-md navbar-dark bg-dark">
-                        <div className="navbar-brand">Учет кабеля</div>
-                    </nav>
+                    <div className="navbar  navbar-light bg-blue-200 " >
+                        <div className="container">
+                            <a className="navbar-brand m-1">Учет кабеля</a>
+                        </div>
+                    </div>
+
                 </header>
             </div>
         );

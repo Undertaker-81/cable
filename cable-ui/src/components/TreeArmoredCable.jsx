@@ -161,7 +161,7 @@ class TreeArmoredCable extends Component {
 
     render() {
         return (
-            <div className="container">
+            <div className="container-tree" style={{marginLeft: '20px'}}>
                 <h1>Кабель бронированный</h1>
                 <div className="row">
                     <div className="col-md-12 text-lg-left">

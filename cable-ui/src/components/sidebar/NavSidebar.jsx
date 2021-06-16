@@ -39,17 +39,17 @@ export const NavSidebar = () => {
                             elemBefore: () => <Icon name="coffee" />
                         },
                         {
-                            title: "About",
-                            itemId: "/about",
+                            title: "Бронированный кабель",
+                            itemId: "/armored",
                             elemBefore: () => <Icon name="user" />,
                             subNav: [
                                 {
                                     title: "Projects",
-                                    itemId: "/about/projects"
+                                    itemId: "/armored/projects"
                                 },
                                 {
                                     title: "Members",
-                                    itemId: "/about/members"
+                                    itemId: "/armored/members"
                                 }
                             ]
                         },

@@ -5,11 +5,13 @@ import TreeArmoredCable from "../components/TreeArmoredCable";
 class Armored extends Component {
     render() {
         return (
-            <div>
+            <>
                <DashboardLayout>
+
                    <TreeArmoredCable />
+
                </DashboardLayout>
-            </div>
+            </>
         );
     }
 }

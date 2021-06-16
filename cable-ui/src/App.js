@@ -1,11 +1,10 @@
 import './App.css';
-import ListArmeredCable from "./components/ListArmeredCable";
-import TreeArmoredCable from "./components/TreeArmoredCable";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import  { BrowserRouter, Route} from "react-router-dom";
+import {  Switch, Router } from 'react-router';
 import HeaderComponent from "./components/HeaderComponent";
 import FooterComponent from "./components/FooterComponent";
-import {NavSidebar} from "./components/sidebar/NavSidebar";
 import Armored from "./pages/armored";
+import Home from "./pages/home";
 
 
 function App() {
@@ -14,9 +13,10 @@ function App() {
          <BrowserRouter>
              <HeaderComponent />
                 <Switch>
-                    <Route path="/">
-                        <Armored />
-                    </Route>
+                    <Route path="/" component={Home}/>
+
+                    <Route path="/armored" component={Armored}/>
+
                 </Switch>
              <FooterComponent />
          </BrowserRouter>
