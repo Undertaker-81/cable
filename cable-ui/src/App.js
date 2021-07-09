@@ -13,9 +13,10 @@ function App() {
          <BrowserRouter>
              <HeaderComponent />
                 <Switch>
-                    <Route path="/" component={Home}/>
+                    <Route exact path="/" component={Home}/>
+                    <Route exact path="/home" component={Home}/>
 
-                    <Route path="/armored" component={Armored}/>
+                    <Route exact path="/armored" component={Armored}/>
 
                 </Switch>
              <FooterComponent />
